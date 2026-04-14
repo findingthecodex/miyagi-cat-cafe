@@ -1,0 +1,35 @@
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Logo till vänster, länkar till höger */
+    align-items: center;
+    background-color: #333; /* Mörkgrå bakgrund */
+    padding: 10px 20px;
+    color: white;
+}
+
+.nav-logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none; /* Tar bort prickarna i listan */
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none; /* Tar bort understrykningen */
+    font-weight: 500;
+    transition: color 0.3s; /* Gör så att färgen tonas när man hovrar */
+}
+
+.nav-links a:hover {
+    color: #ff69b4; /* Ändrar färg till rosa när man för musen över */
+}
