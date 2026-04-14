@@ -1,25 +1,19 @@
 .cat-shop-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    /* 1. Förhindra att de hoppar ner på ny rad */
-    flex-wrap: nowrap; 
-    /* 2. Se till att containern inte blöder ut utanför skärmen */
+    justify-content: center; /* Centrerar raderna */
+    align-items: flex-start; /* Ser till att texten under inte hamnar snett */
+    gap: 10px;               /* Mellanrum mellan varje katt-box */
+    flex-wrap: wrap;         /* TILLÅT radbrytning */
     width: 100%;
-    overflow: hidden; 
+    max-width: 1200px;       /* Valfritt: sätter en maxbredd på hela shoppen */
+    margin: 0 auto;          /* Centrerar containern på sidan */
+    
 }
 
 .cat-shop-container img {
-    /* 3. Sätt den "perfekta" storleken de vill ha */
-    width: 250px; 
-    /* 4. Tillåt dem att krympa (1) men inte växa (0) */
-    flex-shrink: 1;
-    flex-grow: 0;
-    /* 5. Viktigt: hindra dem från att bli helt ihoptryckta */
-    min-width: 50px; 
-    
-    height: auto;
+    width: 100%;      /* Bilden ska fylla hela sin cat-item box */
+    height: 250px;    /* Fast höjd som tidigare */
+    object-fit: cover; 
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -27,12 +21,24 @@
 .cat-shop-container img:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Beräkning: 25% av bredden minus lite för gapet */
+    width: calc(25% - 20px); 
+    min-width: 200px; /* Så att de inte blir för små på mobilen */
+}
 
+.cat-price {
+    color: #555;
+    font-size: 0.9em;
 }
 
 #header2 {
     text-align: left;
     padding-left: 100px;
     margin-bottom: 20px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
