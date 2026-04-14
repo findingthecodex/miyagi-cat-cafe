@@ -25,9 +25,19 @@
     margin-right: auto;
     width: 60%;
 }
+#cat-picture:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
+#cat-picture p {
+    font-size: 24px;
+    text-align: center;
+    color: #555;
+    margin-top: 20px;
+}
