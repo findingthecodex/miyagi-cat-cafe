@@ -21,9 +21,7 @@
 
 #cat-picture {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60%;
+    
 }
 #cat-picture:hover {
     transform: scale(1.05);
@@ -35,9 +33,29 @@ body {
     font-family: Arial, sans-serif;
 }
 
-#cat-picture p {
+#cat-picture {
     font-size: 24px;
     text-align: center;
     color: #555;
     margin-top: 20px;
+}
+
+.cat-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+    flex-wrap: wrap;
+}
+
+.cat-container img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cat-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
