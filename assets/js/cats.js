@@ -1,24 +1,50 @@
 const container = document.getElementById("apiCatContainer");
 
-if (container) {
-  fetch("https://api.thecatapi.com/v1/images/search?limit=10&has_breeds=1")
-    .then(res => res.json())
-    .then(cats => {
+let page = 0;
+const limit = 10;
 
-      cats.forEach(cat => {
+const pageNumber = document.getElementById("pageNumber");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
-        const card = document.createElement("div");
-        card.classList.add("cat-item");
+async function loadCats() {
+  container.innerHTML = "";
 
-        card.innerHTML = `
-          <img src="${cat.url}" alt="cat">
-          <p class="cat-name">Cute Cat</p>
-          <span class="cat-country">Unknown</span>
-        `;
+  const res = await fetch(`https://api.thecatapi.com/v1/breeds`);
+  const allCats = await res.json();
 
-        container.appendChild(card);
-      });
+  const start = page * limit;
+  const paginated = allCats.slice(start, start + limit);
 
-    })
-    .catch(err => console.log("API error:", err));
+  paginated.forEach(cat => {
+    const card = document.createElement("div");
+    card.classList.add("cat-item");
+
+    const img = cat.reference_image_id
+  ? `https://cdn2.thecatapi.com/images/${cat.reference_image_id}.jpg`
+  : "https://via.placeholder.com/300";
+
+card.innerHTML = `
+  <img src="${img}" alt="cat">
+  <p class="cat-name">${cat.name}</p>
+  <span class="cat-country">${cat.origin}</span>
+`;
+
+    container.appendChild(card);
+  });
+
+  pageNumber.textContent = page + 1;
 }
+
+nextBtn?.addEventListener("click", () => {
+  page++;
+  loadCats();
+});
+
+prevBtn?.addEventListener("click", () => {
+  if (page === 0) return;
+  page--;
+  loadCats();
+});
+
+loadCats();
