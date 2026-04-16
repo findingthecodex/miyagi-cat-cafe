@@ -1,0 +1,16 @@
+#contentText {
+  max-width: 600px;       /* Gör att texten inte flyter ut för mycket */
+  margin: 0 auto;        /* Centrerar textblocket */
+  line-height: 1.6;      /* Ger texten luft så den inte ser ihoptryckt ut */
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #333;
+  white-space: pre-line; /* Bevarar dina radbrytningar från HTML-koden */
+  padding: 20px;
+}
+
+#contentBox {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

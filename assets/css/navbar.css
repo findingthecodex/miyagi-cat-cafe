@@ -1,10 +1,17 @@
 .navbar {
     display: flex;
-    justify-content: space-between; /* Logo till vänster, länkar till höger */
+    justify-content: space-between;
     align-items: center;
-    background-color: #333; /* Mörkgrå bakgrund */
+    background-color: #333;
     padding: 10px 20px;
     color: white;
+
+    position: fixed;   /* ny */
+    top: 0;            /* ny */
+    left: 0;           /* ny */
+    width: 100%;       /* ny */
+    z-index: 1000;     /* ny */
+    box-sizing: border-box; /* ny */
 }
 
 .nav-logo {
