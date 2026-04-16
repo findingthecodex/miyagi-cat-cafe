@@ -6,12 +6,12 @@
     padding: 10px 20px;
     color: white;
 
-    position: fixed;   /* ny */
-    top: 0;            /* ny */
-    left: 0;           /* ny */
-    width: 100%;       /* ny */
-    z-index: 1000;     /* ny */
-    box-sizing: border-box; /* ny */
+    position: fixed;   
+    top: 0;            
+    left: 0;          
+    width: 100%;       
+    z-index: 1000;     
+    box-sizing: border-box; 
 }
 
 .nav-logo {
