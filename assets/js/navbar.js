@@ -25,7 +25,7 @@ fetch("/navbar.html")
 
 
 
-// Denna funktion kan kallas när en katt läggs till i adoptionen
+// 🛒 CART (adopt sidan) siffran uppdateras direkt pga updateCartCount och skrivs direkt i DOM
 function addToCart(cat) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -34,6 +34,6 @@ function addToCart(cat) {
   localStorage.setItem("cart", JSON.stringify(cart));
 
   showToast(`${cat.name} added to adoption 🐾`);
-  
+
   updateCartCount();
 }
