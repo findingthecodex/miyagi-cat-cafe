@@ -80,3 +80,10 @@
   font-size: 14px;
   border: 1px solid #ddd;
 }
+
+#searchBar
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
