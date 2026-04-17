@@ -72,3 +72,25 @@ searchInput.addEventListener("input", () => {
 });
 
 loadCats();
+
+// 🔍 SEARCH FÖR MANUELLA KATTER (cafecats sidan)
+
+const manualContainer = document.getElementById("manualCatContainer");
+
+if (searchInput && manualContainer) {
+  const catItems = manualContainer.querySelectorAll(".cat-item");
+
+  searchInput.addEventListener("input", () => {
+    const searchValue = searchInput.value.toLowerCase();
+
+    catItems.forEach(cat => {
+      const name = cat.querySelector(".cat-name").textContent.toLowerCase();
+
+      if (name.includes(searchValue)) {
+        cat.style.display = "flex"; // visa
+      } else {
+        cat.style.display = "none"; // göm
+      }
+    });
+  });
+}
