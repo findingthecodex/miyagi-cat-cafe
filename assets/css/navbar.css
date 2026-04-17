@@ -6,12 +6,12 @@
     padding: 10px 20px;
     color: white;
 
-    position: fixed;   /* ny */
-    top: 0;            /* ny */
-    left: 0;           /* ny */
-    width: 100%;       /* ny */
-    z-index: 1000;     /* ny */
-    box-sizing: border-box; /* ny */
+    position: fixed;   
+    top: 0;            
+    left: 0;          
+    width: 100%;       
+    z-index: 1000;     
+    box-sizing: border-box; 
 }
 
 .nav-logo {
@@ -20,7 +20,7 @@
 }
 
 .nav-links {
-    list-style: none; /* Tar bort prickarna i listan */
+    list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
@@ -28,15 +28,63 @@
 
 .nav-links li {
     margin-left: 20px;
+    position: relative; /* viktigt för dropdown */
 }
 
 .nav-links a {
     color: white;
-    text-decoration: none; /* Tar bort understrykningen */
+    text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s; /* Gör så att färgen tonas när man hovrar */
+    transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: #ff69b4; /* Ändrar färg till rosa när man för musen över */
+    color: #ff69b4;
 }
+
+/* 🔽 DROPDOWN */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 5px 0;
+    border-radius: 8px;
+    min-width: 180px;
+
+    /* animation */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.25s ease;
+    pointer-events: none;
+
+    /* shadow */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* visa dropdown */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* dropdown items */
+.dropdown-menu li {
+    margin: 0;
+}
+
+/* gör hela raden klickbar */
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #333;
+}
+
+/* hover på items */
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+    color: #ff69b4;
+}
+

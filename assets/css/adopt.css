@@ -1,0 +1,110 @@
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 900px;
+  margin: 100px auto 0 auto;
+  padding: 40px;
+
+  background: #f7f7fb;
+  color: #1a1a1a;
+
+  border-radius: 24px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  backdrop-filter: blur(10px);
+}
+
+.cart-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.cart-subtitle {
+  color: gray;
+  margin-bottom: 30px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 🐱 Card */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e1e1e;
+  color: white;
+  border-radius: 16px;
+  padding: 15px 20px;
+  transition: transform 0.2s ease;
+}
+
+.cart-item:hover {
+  transform: scale(1.02);
+}
+
+.cart-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.cart-left img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.cart-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cart-origin {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+/* 💰 Right side */
+.cart-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.remove-btn {
+  background: red;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+/* 🧾 Summary */
+.cart-summary {
+  margin-top: 30px;
+  text-align: right;
+}
+
+#checkoutBtn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+body {
+  background: #f2f4f8;
+  font-family: system-ui, sans-serif;
+}
