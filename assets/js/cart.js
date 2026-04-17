@@ -1,9 +1,10 @@
 const cartContainer = document.getElementById("cartItems");
 const totalPriceEl = document.getElementById("totalPrice");
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+// 🛒 RENDER CART
 function renderCart() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
   cartContainer.innerHTML = "";
 
   let total = 0;
@@ -14,25 +15,27 @@ function renderCart() {
     return;
   }
 
-  cart.forEach((cat, index) => {
+  cart.forEach((item, index) => {
+    const price = 500;
+    total += price;
+
     const div = document.createElement("div");
     div.classList.add("cart-item");
 
-    const price = 500; // fake price per cat 😄
-    total += price;
-
     div.innerHTML = `
       <div class="cart-left">
-        <img src="${cat.img}" />
+        <img src="${item.img}" />
         <div>
-          <p class="cart-name">${cat.name}</p>
-          <p class="cart-origin">${cat.origin}</p>
+          <p class="cart-name">${item.name}</p>
+          <p class="cart-origin">${item.origin}</p>
         </div>
       </div>
 
       <div class="cart-right">
         <span>${price} kr</span>
-        <button class="remove-btn" data-index="${index}">Remove</button>
+        <button class="remove-btn" data-index="${index}">
+          Remove 🗑
+        </button>
       </div>
     `;
 
@@ -42,30 +45,32 @@ function renderCart() {
   totalPriceEl.textContent = total;
 }
 
-// ❌ Ta bort
-cartContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("remove-btn")) {
-    const index = e.target.dataset.index;
+// 🗑 REMOVE ITEM (event delegation)
+if (cartContainer) {
+  cartContainer.addEventListener("click", (e) => {
+    const btn = e.target.closest(".remove-btn");
+    if (!btn) return;
+
+    const index = btn.dataset.index;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.splice(index, 1);
+
     localStorage.setItem("cart", JSON.stringify(cart));
 
     renderCart();
-  }
-});
+  });
+}
 
-renderCart();
-
+// 🛒 ADD TO CART (används från cats + cafecats)
 function addToCart(cat) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  cart.push({
-    name: cat.name,
-    origin: cat.origin,
-    img: cat.reference_image_id
-      ? `https://cdn2.thecatapi.com/images/${cat.reference_image_id}.jpg`
-      : "https://via.placeholder.com/300"
-  });
+  cart.push(cat);
 
   localStorage.setItem("cart", JSON.stringify(cart));
 }
+
+// 🚀 INIT
+renderCart();
