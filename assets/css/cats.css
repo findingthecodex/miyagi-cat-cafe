@@ -92,3 +92,31 @@ body {
   background: #f2f4f8;
   font-family: system-ui, sans-serif;
 }
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+
+  background: #1a1a1a;
+  color: white;
+
+  padding: 12px 18px;
+  border-radius: 12px;
+
+  font-size: 14px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+  pointer-events: none;
+}
+
+/* när den visas */
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}

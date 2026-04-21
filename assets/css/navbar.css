@@ -88,3 +88,33 @@
     color: #ff69b4;
 }
 
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+
+  background: red;
+  color: white;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transform: scale(0.8);
+  transition: 0.2s ease;
+}
+
+/* när den har items */
+.cart-badge.show {
+  opacity: 1;
+  transform: scale(1);
+}

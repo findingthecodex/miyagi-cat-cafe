@@ -7,6 +7,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(135deg, #eef2f7, #f7f9fc);
+  font-family: system-ui, sans-serif;
 }
 
 /* Placeholdern i Cats.html */
@@ -17,14 +19,8 @@ body {
 /* Själva footern från footer.html */
 #footer2 {
   width: 100%;
-  background: #fff;
   color: #000;
   padding: 16px;
   text-align: center;
   box-sizing: border-box;
-}
-
-body {
-  background: #f2f4f8;
-  font-family: system-ui, sans-serif;
 }
