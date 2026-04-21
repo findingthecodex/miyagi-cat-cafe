@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/assets/css/navbar.css">
   <link rel="stylesheet" href="/assets/css/footer.css">
   <link rel="stylesheet" href="/assets/css/adopt.css">
+  <link rel="stylesheet" href="/assets/css/checkout.css">
   <script src="/assets/js/index.js" defer></script>
   <script src="/assets/js/navbar.js" defer></script>
   <script src="/assets/js/checkout.js" defer></script>
@@ -18,18 +19,36 @@
     <h1>Checkout</h1>
     <p class="cart-subtitle">Review your adoption request</p>
 
-    <div id="checkoutItems"></div>
+    <div id="checkoutItems" class="cart-items"></div>
 
     <div class="cart-summary">
       <h2>Total: <span id="totalPrice">0</span> kr</h2>
     </div>
 
-    <form id="checkoutForm">
+    <form id="customerForm">
       <input type="text" id="name" placeholder="Your name" required>
       <input type="email" id="email" placeholder="Your email" required>
-      <textarea id="message" placeholder="Optional message"></textarea>
-      <button type="submit">Confirm adoption</button>
     </form>
+
+    <button id="confirmBtn" type="button">Confirm adoption</button>
+
+    <div id="confirmedBox" hidden>
+      <p>Adoption confirmed</p>
+    </div>
+
+    <div id="orderSummary" hidden>
+      <h2>Order summary</h2>
+      <p><strong>Name:</strong> <span id="summaryName"></span></p>
+      <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+      <p><strong>Date:</strong> <span id="summaryDate"></span></p>
+
+      <div>
+        <strong>Cats:</strong>
+        <ul id="summaryCats"></ul>
+      </div>
+
+      <button id="doneBtn" type="button">Done</button>
+    </div>
   </section>
 
   <div id="footer"></div>
