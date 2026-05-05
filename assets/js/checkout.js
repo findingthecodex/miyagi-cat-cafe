@@ -20,11 +20,23 @@ function renderCheckout() {
   checkoutItems.innerHTML = "";
   let total = 0;
 
+  // --- VALIDERING: Kolla om korgen är tom ---
   if (cart.length === 0) {
     checkoutItems.innerHTML = "<p>Your basket is empty 😿</p>";
     totalPriceEl.textContent = "0";
-    return;
+    
+    // Inaktivera knappen så man inte kan klicka på "Confirm"
+    confirmBtn.disabled = true;
+    confirmBtn.style.opacity = "0.5";
+    confirmBtn.style.cursor = "not-allowed";
+    return; // Avbryt funktionen här
   }
+
+  // Om det finns katter, aktivera knappen
+  confirmBtn.disabled = false;
+  confirmBtn.style.opacity = "1";
+  confirmBtn.style.cursor = "pointer";
+  // ------------------------------------------
 
   cart.forEach((item) => {
     const price = 2000;
@@ -50,24 +62,70 @@ function renderCheckout() {
 }
 
 confirmBtn.addEventListener("click", () => {
+  // Kör HTML5-validering (required fält i formen)
   if (!customerForm.reportValidity()) return;
 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const today = new Date().toLocaleDateString("en-GB");
+  
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  
+  let total = 0;
+  let alertCatList = ""; 
+  summaryCats.innerHTML = ""; 
 
-  summaryName.textContent = nameInput.value.trim();
-  summaryEmail.textContent = emailInput.value.trim();
-  summaryDate.textContent = today;
+  cart.forEach((item, index) => {
+    const price = 2000;
+    total += price;
 
-  summaryCats.innerHTML = "";
-  cart.forEach((item) => {
+    // Bygg text för alert-fönstret
+    alertCatList += `${index + 1}. ${item.name} - ${price} kr\n`;
+
+    // Bygg HTML för orderbekräftelsen på sidan
     const li = document.createElement("li");
-    li.textContent = item.name;
+    li.style.display = "flex";
+    li.style.justifyContent = "space-between";
+    li.style.padding = "5px 0";
+    li.innerHTML = `<span>${item.name}</span> <strong>${price} kr</strong>`;
     summaryCats.appendChild(li);
   });
 
+  // Skapa den engelska texten till alerten
+  const alertMessage = `
+THANK YOU FOR YOUR ORDER!
+-------------------------------
+Customer Details:
+Name: ${name}
+Email: ${email}
+Date: ${today}
+
+Items ordered:
+${alertCatList}
+-------------------------------
+TOTAL PRICE: ${total} kr
+
+We will contact you shortly regarding the delivery!
+  `.trim();
+
+  alert(alertMessage);
+
+  // Uppdatera sammanfattningen på sidan
+  summaryName.textContent = name;
+  summaryEmail.textContent = email;
+  summaryDate.textContent = today;
+  
+  const totalDiv = document.createElement("div");
+  totalDiv.style.borderTop = "2px solid #333";
+  totalDiv.style.marginTop = "10px";
+  totalDiv.style.paddingTop = "10px";
+  totalDiv.innerHTML = `<h3 style="text-align:right">Total: ${total} kr</h3>`;
+  summaryCats.appendChild(totalDiv);
+
+  // Visa boxarna och dölj formuläret
   confirmedBox.hidden = false;
   orderSummary.hidden = false;
+  customerForm.style.display = "none"; // Valfritt: dölj formuläret när man är klar
 });
 
 doneBtn.addEventListener("click", () => {
@@ -80,4 +138,5 @@ doneBtn.addEventListener("click", () => {
   window.location.href = "/pages/adopt.html";
 });
 
+// Kör renderingen när sidan laddas
 renderCheckout();
